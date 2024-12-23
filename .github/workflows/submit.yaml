@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: "1.23"
+      - name: decode testcase
+        run: openssl enc -d -aes-256-cbc -salt -k aaaa -in ./problems/1.two-sum/test -out ./problems/1.two-sum/test.csv
 
       - name: build
         run: go build ./.github/cmd/1.two-sum/main.go
