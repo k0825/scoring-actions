@@ -1,12 +1,14 @@
-// main.ts
-const main = (inputs: string): string => {
-  const numbers = inputs.split(" ").map(Number);
-  const sum = numbers.reduce((a, b) => a + b, 0);
-  return sum.toString();
+const main = (inputs: string): void => {
+  const lines = inputs.split(/\n/);
+
+  const firstLine = lines[0].split(/\s/);
+  const A = parseInt(firstLine[0]);
+  const B = parseInt(firstLine[1]);
+
+  const secondLine = lines[1];
+  const S = secondLine;
+
+  console.log(A + B, S);
 };
 
-if (require.main === module) {
-  const inputs = process.argv[2];
-  const output = main(inputs);
-  console.log(output);
-}
+main(require("fs").readFileSync("/dev/stdin", "utf8"));

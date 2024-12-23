@@ -17,6 +17,13 @@ jobs:
       - name: install dependencies
         run: npm install
 
-      - name: run tests
-        run: sh ./.github/bin/test.sh
-        working-directory: ./
+      - name: setup golang
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+
+      - name: build
+        run: go build ./.github/cmd/1.two-sum/main.go
+
+      - name: run
+        run: ./main
